@@ -1,0 +1,70 @@
+﻿@model bdBusTicket_Booking.Areas.Boocking.Models.CustomerViewModel
+@{
+    ViewData["Title"] = "Customer List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card" style="width: 100%;">
+    <div class="card-body">
+        <div class="container">
+
+            <div class="row clearfix">
+                <div class="col-12">
+                    <div class="card mb-4">
+                        <!-- Customer List -->
+                        <div class="card-header  d-flex flex-row align-items-center justify-content-between mb-2 mt-2">
+                            <h5 class="m-0 font-weight-bold text-primary">Customer List</h5>
+                            <a class='btn btn-info' style="" data-toggle='tooltip' title='Go Back' href='/Boocking/bdTicket/CustomerInfo'><i class="fas fa-plus"> <span style="">Add Customer</span></i></a>
+                        </div>
+                        <hr style="border: 5px solid ;color:cadetblue" />
+                        <!-- List Body -->
+                        <div class="card-body">
+                            <table class="table table-striped table-bordered text-center" id="salaryheadtbl">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:left">SL No.</th>
+                                        <th style="text-align:left">Customer Name</th>
+                                        <th>Date of Birth</th>
+                                        <th>Gender</th>
+                                        <th>Age</th>
+                                        <th>Contact</th>
+                                        <th>Address</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int i = 1;
+                                        @foreach (var data in Model.customers)
+                                        {
+                                    <tr>
+                                        <td style="text-align:left">@i</td>
+                                        <td style="text-align:left">@data?.fname @data?.lname</td>
+                                        <td>@data?.dob?.ToString("dd-MMM-yyyy")</td>
+                                        @if (data?.gender==1)
+                                        {
+                                            <td>Male</td>
+                                        }
+                                        else if(data?.gender == 2)
+                                        {
+                                            <td>Female</td>
+                                        }
+                                        <td>@data?.age</td>
+                                        <td>@data?.contact</td>
+                                        <td>@data?.address</td>
+                                        <td>
+                                            <a class="btn btn-success" href="/Boocking/bdTicket/CustomerInfo?=@data.Id"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
+                                            <a class="btn btn-danger" href=""/Boocking/bdTicket/DeleteCustomerInfo?=@data.Id"" ><i class="fa fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                            i++;
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

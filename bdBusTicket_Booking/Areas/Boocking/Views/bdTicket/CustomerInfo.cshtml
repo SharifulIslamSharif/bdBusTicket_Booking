@@ -1,0 +1,97 @@
+﻿@model bdBusTicket_Booking.Areas.Boocking.Models.CustomerViewModel
+@{
+    ViewData["Title"] = "CustomerInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card" style="width: 100%;">
+    <div class="card-body">
+        <div class="container">
+            <div class="card-header  d-flex flex-row align-items-center justify-content-between mb-2 mt-2">
+                <h5 class="m-0 font-weight-bold text-primary">Customer Info</h5>
+                <a class='btn btn-info' style="" data-toggle='tooltip' title='Go Back' href='/Boocking/bdTicket/CustomerList'><i class="fas fa-angle-double-left"> <span style="">Back To List</span></i></a>
+            </div>
+            <hr style="border: 5px solid ;color:cadetblue" />
+            <form asp-area="Boocking" id="FormId" asp-controller="bdTicket" asp-action="CustomerInfo" method="post" data-parsley-validate="parsley">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="First Name" class="col-sm-3 col-form-label">Fisrt Name <span style="color:red;">*</span></label>
+                            <div class="col-sm-9">
+                                @if (Model.customer?.Id > 0)
+                                {
+                                    <input type="hidden" id="customerId" name="customerId" value="@Model.customer?.Id" />
+                                }
+                                else
+                                {
+                                    <input type="hidden" id="customerId" name="customerId" value="0" />
+                                }
+                                <input type="text" class="form-control" id="customerFname" name="fname" value="@Model.customer?.fname" data-parsley-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Customer DOB" class="col-sm-3 col-form-label">Date of Birth <span style="color:red;">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="customerDoB" value="@Model.customer?.dob?.ToString("dd-MMM-yyyy")" name="dob" data-parsley-required="true">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Customer Age" class="col-sm-3 col-form-label">Age <span style="color:red;">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" id="customerAge" value="@Model.customer?.age" name="age" data-parsley-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Customer Address" class="col-sm-3 col-form-label">Address <span style="color:red;">*</span></label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="customerAddress" name="address" value="" aria-label="With textarea" data-parsley-required="true"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="Last Name" class="col-sm-3 col-form-label">Last Name </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="customerLname" name="lname" value="@Model.customer?.lname">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Customer Gender" class="col-sm-3 col-form-label">Gender <span style="color:red;">*</span></label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="customerGender" name="gender" data-parsley-required="true">
+                                    <option value="">Select</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Customer Contact" class="col-sm-3 col-form-label">Contact No. <span style="color:red;">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" id="customerContact" name="contact" value="@Model.customer?.contact" data-parsley-required="true">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+                <button type="submit" id="submit" value="Submit" class="btn btn-success ml-2" style="float:right; margin-top:5px;"><i class="fas fa-save"></i> Save</button>
+                <button type="reset" id="reset" value="reset" class="btn btn-info" style="float:right; margin-top:5px;"><i class="fas fa-undo"></i> Reset</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#customerGender').val(@Model.customer?.gender);
+        $("#customerAddress").val('@Html.Raw(Model.customer?.address?.Replace(System.Environment.NewLine, " "))');
+    });
+</script>
+

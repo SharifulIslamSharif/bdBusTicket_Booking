@@ -1,0 +1,84 @@
+﻿@*@model AdminDashboardViewModel*@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Content -->
+
+<div class="content" id="app">
+    <div class="row">
+        <div class="col-md-6 col-xl-3 js-appear-enabled animated fadeIn" data-toggle="appear">
+            <a class="block block-rounded block-link-pop" href="#">
+                <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                    <i class="icon fas fa-user" style="color:Highlight"></i>
+                    <div class="ml-3 text-right">
+                        <p class="text-muted font-weight-bold mb-0">
+                            User
+                        </p>
+                        <p class="font-size-h3 font-w300 mb-0">
+                            @*@Model.course*@
+                        </p>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-xl-3 js-appear-enabled animated fadeIn" data-toggle="appear">
+            <a class="block block-rounded block-link-pop" href="#">
+                <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                    <i class="icon fas fa-bus" style="color:Highlight"></i>
+
+
+                    <div class="ml-3 text-right">
+
+                        <p class="text-muted font-weight-bold mb-0">
+                            Bus
+                        </p>
+                        <p class="font-size-h3 font-w300 mb-0">
+                            @*@Model.course*@
+                        </p>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-xl-3 js-appear-enabled animated fadeIn" data-toggle="appear" data-timeout="200">
+            <a class="block block-rounded block-link-pop" href="#">
+                <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                   <i class="icon fas fa-road" style="color:Highlight"></i>
+                    <div class="ml-3 text-right">
+                        <p class="text-muted font-weight-bold mb-0">
+                            Route
+                        </p>
+                        <p class="font-size-h3 font-w300 mb-0">
+                            @*@Model.lecture*@
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-xl-3 js-appear-enabled animated fadeIn" data-toggle="appear" data-timeout="400">
+            <a class="block block-rounded block-link-pop" href="#">
+                <div class="block-content block-content-full d-flex align-items-center justify-content-between ">
+                    <i class="icon fas fa-star" style="color:Highlight"></i>
+                    <div class="ml-3 text-right">
+                        <p class="text-muted font-weight-bold mb-0">
+                            Master Data
+                        </p>
+                        <p class="font-size-h3 font-w300 mb-0">
+                            @*@Model.teacher*@
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+<script>
+        $(document).ready(function () {
+        })
+</script>
+
+<!-- END Page Content -->
